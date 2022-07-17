@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Amazon Sign-In
+        </title>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+.cen{
+    margin-top: 0px;
+    margin-left: 750px;
+    margin-right: 790px;
+    border: 2px rgb(255, 255, 255);
+    border-style:groove;
+    padding: 20px;
+    border-radius: 5px;
+}
+.ce{
+ 
+    margin-left: 810px;
+
+}
+a{
+    color: blue;
+}
+a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+input
+input[text]:hover{
+    background-color: orange;
+}
+
+
+
+
+        </style>
+    </head>
+    <body>
+        <div class="ce">
+        <img src="logofsinup.png" alt="img"></div>
+        <div class="cen">
+            
+        <h2>
+        Create account
+        </h2>
+        <form>
+            <label for="name"> <b>Firstname</b></label><br>
+            <input type="text" id="name" name="name" onkeyup="showHint(this.value)"style="height: 20px;width: 310px;" required><br><br>
+
+            
+            
+            <label for="lname"> <b>Lastname</b></label><br>
+            <input type="text" id="lname" name="lname" onkeyup="show(this.value)"style="height: 20px;width: 310px;" required><br>
+
+           
+
+            <label for="email"><b>email</b></label><br>
+            <input type="email" id="email" name="email" onkeyup="Hint(this.value)"style="height: 20px;width: 310px;" required><br>
+
+           
+            <label for="pass"><b>Passsword</b></label><br>
+            <input type="password" id="pass" name="pass" style="height: 20px; width: 310px;" required><br>
+            <p>
+                Passwords must be at least 6 characters.</p>
+                <label for="ppass"><b>Re-enter Passsword</b></label><br>
+                <input type="password" id="ppass" name="ppass" style="height: 20px; width: 310px;" required><br><br>
+            <input type="submit" name="submit"value="Create New Account" style="height: 30px;width:310px; background-color: orange;"><br>
+            <p>By creating an account, you agree to Amazon's<a href=""> Conditions of Use</a> and <a href="">Privacy Notice.</a></p>
+        </form>
+        </div>
+        <center>
+<table style="padding: 20px;border-color: black;">
+    <tr>
+        <th>
+            first name
+        </th>
+        <th>
+            last name
+        </th>
+        <th>
+            email
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <p><span id="txtHint"></span></p>
+        </td>
+        <td>
+            <p><span id="Hint"></span></p>
+        </td>
+        <td>
+            <p><span id="txt"></span></p>
+
+        </td>
+    </tr>
+</table></center>
+        <footer style="background-color: rgb(235, 240, 245);">
+            <center>
+            <pre style="padding-top: 20px;"><a href="">Conditions of Use  Privacy Notice  Help   </a></pre>
+            <p>© 1996-2022, Amazon.com, Inc. or its affiliates</p>
+            </center>
+        </footer>
+        
+<script>
+    function showHint(str) {
+      if (str.length == 0) { 
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+      }
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("txtHint").innerHTML =
+        this.responseText;
+      }
+      xhttp.open("GET", "gethint.php?q="+str);
+      xhttp.send();   
+    }
+    
+    function show(str) {
+      if (str.length == 0) { 
+        document.getElementById("Hint").innerHTML = "";
+        return;
+      }
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("Hint").innerHTML =
+        this.responseText;
+      }
+      xhttp.open("GET", "show.php?q="+str);
+      xhttp.send();   
+    }
+    function Hint(str) {
+      if (str.length == 0) { 
+        document.getElementById("txt").innerHTML = "";
+        return;
+      }
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("txt").innerHTML =
+        this.responseText;
+      }
+      xhttp.open("GET", "email.php?q="+str);
+      xhttp.send();   
+    }</script>
+    </body>
+</html>
